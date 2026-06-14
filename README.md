@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chamyan - Your Online Shopping Destination</title>
+    <style>
+        /* Basic CSS for structure and readability */
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
+        header { background-color: #232f3e; color: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
+        header .logo { font-size: 1.8em; font-weight: bold; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        nav a:hover { color: #ff9900; }
+        .main-container { display: flex; max-width: 1200px; margin: 20px auto; padding: 0 20px; }
+        .content-area { flex-grow: 1; background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .sidebar { width: 250px; margin-right: 20px; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.05); }
+        .sidebar h3 { color: #ff9900; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 0; }
+        .sidebar ul { list-style: none; padding: 0; }
+        .sidebar ul li { padding: 8px 0; border-bottom: 1px dashed #eee; cursor: pointer; }
+        .sidebar ul li:hover { color: #007bff; }
+        
+        /* Form Styling */
+        .form-section { max-width: 400px; margin: 20px 0; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #fff; }
+        .form-section h2 { color: #232f3e; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .form-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .form-group input:invalid:not(:placeholder-shown) { border-color: red; } /* Style for invalid input */
+        .form-group input:valid:not(:placeholder-shown) { border-color: green; } /* Style for valid input */
+        .form-group button { background-color: #ff9900; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; font-size: 1em; }
+        .form-group button:hover { background-color: #e68a00; }
+
+        /* General Item Display */
+        .item-list, .order-list { margin-top: 20px; }
+        .item { border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 5px; }
+        .item h4 { margin-top: 0; color: #007bff; }
+
+        /* Utility classes for demonstration */
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Chamyan</div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#products">Product Items</a>
+            <a href="#contact">Contact Us</a>
+            <a href="#about">About Us</a>
+            <a href="#auth" onclick="document.getElementById('auth').classList.remove('hidden')">Login/Register</a>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        
+        <div class="sidebar">
+            <h3>Customer Panel</h3>
+            <ul>
+                <li onclick="showSection('orders')">📦 Orders List</li>
+                <li onclick="showSection('wishlist')">💌 Wishlist</li>
+                <li onclick="showSection('reviews')">⭐ Comments & Reviews</li>
+                <li onclick="showSection('customer-care')">📞 Customer Care</li>
+                <li onclick="showSection('reporting')">🚨 Reporting Options</li>
+            </ul>
+        </div>
+
+        <div class="content-area">
+            
+            <section id="home" class="content-section">
+                <h2>Welcome to Chamyan!</h2>
+                <p>Your one-stop shop for everything you need. Use the navigation links to explore our products or manage your account.</p>
+                
+            </section>
+            
+            <section id="products" class="content-section">
+                <h2>Featured Product Items</h2>
+                <div class="item-list">
+                    <div class="item">
+                        <h4>Ultra HD Monitor 🖥️</h4>
+                        <p>A stunning display for work and gaming.</p>
+                        <p><strong>Price: $299.99</strong></p>
+                    </div>
+                    <div class="item">
+                        <h4>Noise-Cancelling Headphones 🎧</h4>
+                        <p>Immersive sound and comfort.</p>
+                        <p><strong>Price: $149.50</strong></p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="contact" class="content-section hidden">
+                <h2>Contact Us</h2>
+                <p>Email: support@Chamyan.com | Phone: 9894448252</p>
+            </section>
+            
+            <section id="about" class="content-section hidden">
+                <h2>About Us</h2>
+                <p>MegaStore has been serving customers since 2020 with the best products and prices.</p>
+            </section>
+            
+            <section id="auth" class="content-section">
+                <h2>Account Access</h2>
+                
+                <div class="form-section">
+                    <h3>User Login</h3>
+                    <form onsubmit="event.preventDefault(); alert('Login Attempted. Check console for JS validation logic.');">
+                        <div class="form-group">
+                            <label for="login-email">Email:</label>
+                            <input type="email" id="login-email" name="email" required placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password:</label>
+                            <input type="password" id="login-password" name="password" required minlength="6" placeholder="Enter your password">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit">Log In</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="form-section">
+                    <h3>User Registration</h3>
+                    <form onsubmit="event.preventDefault(); alert('Registration Attempted. Check console for JS validation logic.');">
+                        <div class="form-group">
+                            <label for="reg-name">Full Name:</label>
+                            <input type="text" id="reg-name" name="name" required placeholder="Paul Walker">
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-email">Email:</label>
+                            <input type="email" id="reg-email" name="email" required placeholder="you@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-password">Password:</label>
+                            <input type="password" id="reg-password" name="password" required minlength="8" placeholder="Must be at least 8 characters">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <section id="orders" class="content-section hidden">
+                <h2>📦 Your Orders List</h2>
+                <div class="order-list">
+                    <div class="item">
+                        <h4>Order #MS-1001 (Delivered)</h4>
+                        <p>Date: 2025-10-25 | Total: $450.00 | Items: 2</p>
+                    </div>
+                    <div class="item">
+                        <h4>Order #MS-1002 (Shipped)</h4>
+                        <p>Date: 2025-11-01 | Total: $50.99 | Items: 1</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="wishlist" class="content-section hidden">
+                <h2>💌 Your Wishlist</h2>
+                <div class="item-list">
+                    <div class="item">
+                        <h4>Luxury Smartwatch</h4>
+                        <p>Current Price: $299.00</p>
+                    </div>
+                    <div class="item">
+                        <h4>Coffee Maker</h4>
+                        <p>Current Price: $75.00</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="reviews" class="content-section hidden">
+                <h2>⭐ Comments & Reviews</h2>
+                <p>This section would display reviews you have left or comments on products.</p>
+                <div class="item">
+                    <h4>Review for Ultra HD Monitor</h4>
+                    <p><strong>Rating: 5/5</strong> - "Excellent quality for the price!"</p>
+                </div>
+            </section>
+
+            <section id="customer-care" class="content-section hidden">
+                <h2>📞 Customer Care</h2>
+                <p>Need help? You can reach us via our toll-free number or live chat.</p>
+                <p>Toll-Free: 1-800-MEGASTORE</p>
+            </section>
+
+            <section id="reporting" class="content-section hidden">
+                <h2>🚨 Reporting Options</h2>
+                <p>Report an issue with an order, a seller, or a website bug.</p>
+                <form class="form-section" style="max-width: none;">
+                    <div class="form-group">
+                        <label for="report-type">Issue Type:</label>
+                        <select id="report-type" required>
+                            <option value="">Select...</option>
+                            <option value="order">Order/Delivery Problem</option>
+                            <option value="seller">Seller Misconduct</option>
+                            <option value="bug">Website Bug</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="report-details">Details:</label>
+                        <textarea id="report-details" rows="4" required placeholder="Describe the issue..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Submit Report</button>
+                    </div>
+                </form>
+            </section>
+
+        </div>
+    </div>
+
+    <script>
+        // Simple JavaScript to handle section switching (like a single-page app)
+        function showSection(id) {
+            // Hide all content sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            // Show the requested section
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        // Initialize: ensure a section is visible on load
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('home');
+        });
+    </script>
+
+</body>
+</html>
